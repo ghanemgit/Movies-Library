@@ -3,7 +3,6 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-//const error = require('./Movie Data/error.json');
 const axios = require('axios');
 const server = express();
 const PORT = process.env.PORT;
@@ -25,10 +24,6 @@ function MovieInfo(id, title, release_date, poster_path, overview) {
     this.overview = overview;
 }
 
-// function errorCons(status, responseText) {
-//     this.status = status;
-//     this.responseText = responseText;
-// }
 
 let user_language_search = "en-US";
 let userSearch = "Jack Reacher";//i create function to replace space by plus sign below {replaceSpaceByPlus(string)}
@@ -48,7 +43,6 @@ function trending(req, res) {
     let arr = [];
     axios.get(trendingUrl)
         .then((resultComeFromAPI) => {
-            //console.log(resultComeFromAPI.data.results);
             arr = resultComeFromAPI.data.results.map(info => {
                 return new MovieInfo(info.id, info.title, info.release_date, info.poster_path, info.overview);
             });
@@ -66,7 +60,6 @@ function search(req, res) {
 
     let arr2 = [];
     axios.get(searchUrl).then((resultComeFromAPI) => {
-        //console.log(resultComeFromAPI.data.results)
         arr2 = resultComeFromAPI.data.results.map(info => {
             return new MovieInfo(info.id, info.title, info.release_date, info.poster_path, info.overview);
         });
@@ -102,7 +95,6 @@ function replaceSpaceByPlus(string) {
     let string2 = string.replace(/ /g, "+");
     return string2;
 }
-
 
 
 server.listen(PORT, () => {
