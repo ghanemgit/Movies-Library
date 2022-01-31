@@ -1,10 +1,11 @@
 # Movies-Library
-# Project Name Movies-Library Project Version 1.0.0
+# Project Name Movies-Library Project Version 2.0.0
 
 **Author Name**: Mohammad Ghanem
 
 ## WRRC
 Add an image of your WRRC here
+![WRRC](https://i.ibb.co/wWsGhNx/WRRC.png)
 
 
 ## Overview
