@@ -81,7 +81,7 @@ function search(req, res) {
 
 function addMovie(req, res) {
     const obj = req.body;
-    let mySql = `INSERT INTO movietable(title,release_date,poster_path,overview) VALUES ($1,$2,$3,$4) RETURNING *;`
+    let mySql = `INSERT INTO movie_table(title,release_date,poster_path,overview) VALUES ($1,$2,$3,$4) RETURNING *;`
     let arr = [obj.title, obj.release_date, obj.poster_path, obj.overview];
     client.query(mySql, arr).then(data => {
         res.status(200).json(data.rows);
@@ -92,7 +92,7 @@ function addMovie(req, res) {
 
 
 function getMovie(req, res) {
-    let sql = `SELECT * FROM movietable;`;
+    let sql = `SELECT * FROM movie_table;`;
     client.query(sql).then(data => {
         res.status(200).json(data.rows);
     }).catch(error => {
