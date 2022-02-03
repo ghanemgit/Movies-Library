@@ -23,7 +23,11 @@ const PORT = process.env.PORT;
 const KEY = process.env.KEY;
 //////From .env///////
 
-const client = new pg.Client(DATABASE_URL);
+const client = new pg.Client({
+    connectionString:
+        process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false }
+});
 
 ///////////Task12/////////////
 server.get('/', homePage);
